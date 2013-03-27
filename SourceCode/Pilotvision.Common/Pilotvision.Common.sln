@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilotvision.Common", "Pilotvision.Common\Pilotvision.Common.csproj", "{4EFE3B99-C50F-44A2-AF6A-A6AEA336AE42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilotvision.Common.Tests", "Pilotvision.Common.Tests\Pilotvision.Common.Tests.csproj", "{BBE7E314-BB85-4220-8C6D-06F93F483504}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilotvision.Common.DataAccess", "Pilotvision.Common.DataAccess\Pilotvision.Common.DataAccess.csproj", "{0EC8744E-74E9-4360-AE72-B9A600206698}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EFE3B99-C50F-44A2-AF6A-A6AEA336AE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EFE3B99-C50F-44A2-AF6A-A6AEA336AE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EFE3B99-C50F-44A2-AF6A-A6AEA336AE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EFE3B99-C50F-44A2-AF6A-A6AEA336AE42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE7E314-BB85-4220-8C6D-06F93F483504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE7E314-BB85-4220-8C6D-06F93F483504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE7E314-BB85-4220-8C6D-06F93F483504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE7E314-BB85-4220-8C6D-06F93F483504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EC8744E-74E9-4360-AE72-B9A600206698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC8744E-74E9-4360-AE72-B9A600206698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC8744E-74E9-4360-AE72-B9A600206698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC8744E-74E9-4360-AE72-B9A600206698}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
