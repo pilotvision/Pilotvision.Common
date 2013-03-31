@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
-using ICSharpCode.SharpZipLib.Checksums;
-using ICSharpCode.SharpZipLib.Zip;
+using Ionic.Zip;
 
 namespace Pilotvision.Common
 {
@@ -10,6 +9,23 @@ namespace Pilotvision.Common
         public static MemoryStream Compress(MemoryStream target, string fileName, string password = "")
         {
             var result = new MemoryStream();
+            using (ZipFile zip = new ZipFile())
+            {
+                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
+
+                byte[] buffer = target.ToArray();
+                ZipEntry e = zip.AddEntry(fileName, buffer);
+                if (!string.IsNullOrEmpty(password))
+                {
+                    e.Password = password;
+                    e.Encryption = EncryptionAlgorithm.WinZipAes256;
+                }
+                zip.Save(result);
+            }
+            return result;
+            
+            /*
+            // var result = new MemoryStream();
 
             using (ZipOutputStream zipStream = new ZipOutputStream(result)
             {
@@ -41,9 +57,9 @@ namespace Pilotvision.Common
                 ZipEntry entry = new ZipEntry(fileName)
                 {
                     Crc = crc.Value, 
-                    /* サイズを設定する*/
+                    // サイズを設定する
                     Size = buffer.Length, 
-                    /* 時間を設定する*/
+                    // 時間を設定する
                     DateTime = DateTime.Now
                 };
 
@@ -54,8 +70,9 @@ namespace Pilotvision.Common
                 zipStream.Finish();
                 zipStream.Close();
 
-                return result;
+                return result;             
             }
+            */
         }
     }
 }
