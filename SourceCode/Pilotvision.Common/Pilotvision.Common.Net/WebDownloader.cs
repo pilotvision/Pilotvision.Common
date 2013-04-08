@@ -7,13 +7,38 @@ namespace Pilotvision.Common.Net
     {
         protected virtual WebRequest CreateRequest(string uri)
         {
-            return WebRequest.Create(uri);
+            return (HttpWebRequest)WebRequest.Create(uri);
+        }
+
+        public virtual bool ExistsFile(string uri)
+        {
+            var req = CreateRequest(uri);
+
+            try
+            {
+                using (var res = req.GetResponse()) { }
+            }
+            catch (WebException e)
+            {
+                if (e.Status == WebExceptionStatus.ProtocolError)
+                {
+                    var r = (HttpWebResponse)e.Response;
+                    if (r.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return true;
         }
 
         public MemoryStream Download(string uri)
         {
             var req = CreateRequest(uri);
-
             using (var res = req.GetResponse())
             {
                 using (Stream resStream = res.GetResponseStream())

@@ -18,6 +18,33 @@ namespace Pilotvision.Common.Net
             Password = password;
         }
 
+        public override bool ExistsFile(string uri)
+        {
+            var req = CreateRequest(uri);
+            (req as FtpWebRequest).Method = WebRequestMethods.Ftp.GetDateTimestamp;
+
+            try
+            {
+                using (var res = req.GetResponse()) { }
+            }
+            catch (WebException e)
+            {
+                if (e.Status == WebExceptionStatus.ProtocolError)
+                {
+                    var r = (FtpWebResponse)e.Response;
+                    if (r.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return true;
+        }
+
         protected override WebRequest CreateRequest(string uri)
         {
             FtpWebRequest result = (FtpWebRequest)WebRequest.Create(uri);

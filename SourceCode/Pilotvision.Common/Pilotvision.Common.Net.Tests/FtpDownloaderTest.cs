@@ -98,5 +98,25 @@ namespace Pilotvision.Common.Net.Tests
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual is FtpWebRequest);
         }
+
+        /// <summary>
+        ///ExistsFile のテスト
+        ///</summary>
+        [TestMethod()]
+        public void ExistsFileTest()
+        {
+            string uri = @"ftp://www.pilotvision.co.jp/googlehostedservice.html";
+            string userName = "username";
+            string password = "password";
+
+            FtpDownloader target = new FtpDownloader(userName, password);
+
+            var actual = target.ExistsFile(uri);
+            Assert.AreEqual(true, actual);
+
+            uri = @"ftp://www.pilotvision.co.jp/foo.bar";
+            actual = target.ExistsFile(uri);
+            Assert.AreEqual(false, actual);
+        }
     }
 }

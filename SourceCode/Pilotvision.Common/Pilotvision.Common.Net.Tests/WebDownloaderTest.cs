@@ -99,5 +99,25 @@ namespace Pilotvision.Common.Net.Tests
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual is WebRequest);
         }
+
+        /// <summary>
+        ///ExistsFile のテスト
+        ///</summary>
+        [TestMethod()]
+        public void ExistsFileTest()
+        {
+            string uri = "http://www.pilotvision.co.jp/index.php";
+
+            var target = new WebDownloader();
+            var actual = target.ExistsFile(uri);
+
+            Assert.AreEqual(true, actual);
+
+            uri = "http://www.pilotvision.co.jp/foo.bar";
+            actual = target.ExistsFile(uri);
+
+            Assert.AreEqual(false, actual);
+
+        }
     }
 }
