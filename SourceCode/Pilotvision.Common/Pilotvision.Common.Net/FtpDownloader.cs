@@ -25,7 +25,10 @@ namespace Pilotvision.Common.Net
 
             try
             {
-                using (var res = req.GetResponse()) { }
+                using (var res = req.GetResponse())
+                {
+                    res.Close();
+                }
             }
             catch (WebException e)
             {

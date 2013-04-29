@@ -16,7 +16,10 @@ namespace Pilotvision.Common.Net
 
             try
             {
-                using (var res = req.GetResponse()) { }
+                using (var res = req.GetResponse())
+                {
+                    res.Close();
+                }
             }
             catch (WebException e)
             {
@@ -55,6 +58,7 @@ namespace Pilotvision.Common.Net
                         result.Write(buffer, 0, readSize);
                     }
 
+                    res.Close();
                     return result;
                 }
             }
