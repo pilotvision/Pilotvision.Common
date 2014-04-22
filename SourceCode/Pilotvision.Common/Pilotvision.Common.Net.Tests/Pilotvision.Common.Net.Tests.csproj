@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="FtpDownloaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmtpMessageTest.cs" />
     <Compile Include="WebDownloaderTest.cs" />
   </ItemGroup>
   <ItemGroup>
