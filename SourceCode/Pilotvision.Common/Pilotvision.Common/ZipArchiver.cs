@@ -35,18 +35,15 @@ namespace Pilotvision.Common
                 // パスワードが設定されている場合
                 if (string.IsNullOrEmpty(password))
                 {
-                    zip.Password = "password";
+                    zip.Password = password;
                 }
-
-                // 展開先に同名のファイルがあれば上書きする
-                zip.ExtractExistingFile = ExtractExistingFileAction.OverwriteSilently;
-                // DoNotOverwriteで上書きしない。Throwで例外をスロー。既定値はThrow。
 
                 // ZIP書庫内のエントリを取得
                 foreach (var entry in zip)
                 {
                     //エントリを展開する
-                    entry.Extract(destinationFolder);
+                    // 展開先に同名のファイルがあれば上書きする
+                    entry.Extract(destinationFolder, ExtractExistingFileAction.OverwriteSilently);
                 }
             }
         }
