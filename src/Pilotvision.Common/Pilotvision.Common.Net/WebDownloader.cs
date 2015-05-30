@@ -42,6 +42,8 @@ namespace Pilotvision.Common.Net
         public MemoryStream Download(string uri)
         {
             var req = CreateRequest(uri);
+            (req as HttpWebRequest).KeepAlive = false;
+
             using (var res = req.GetResponse())
             {
                 using (Stream resStream = res.GetResponseStream())
